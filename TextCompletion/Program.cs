@@ -110,43 +110,43 @@ public class Program
 
         #region Structured output
 
-        var carListings = new[]
-        {
-            "Check out this 2020 Tesla Model 3! It's in excellent condition, has a long range, and comes with autopilot features.",
-            "Lease this 2018 Ford F-150! It's a reliable truck with a spacious cabin and great towing capacity.",
-            "A classic 1967 Chevrolet Camaro is up for sale! This vintage car has been restored and is a collector's dream.",
-            "Brand new 2023 BMW X5 for sale! It offers luxury, performance, and advanced technology features.",
-            "Selling a 2015 Honda Civic! It's fuel-efficient, well-maintained, and perfect for daily commuting."
-        };
-        foreach (var listingText in carListings)
-        {
-            var response = await client.GetResponseAsync<CarDetails>(
-                $"""
-                Convert the Following car listing into a JSON obejct matching this C# schema:
-                Condition: "New" or "Used"
-                Make: (car manufacturer)
-                Model: (car model)
-                Year: (four-digit year)
-                ListingType: "Sale" or "Lease"
-                Price: integer only
-                Features: array of short strings
-                tenWordSummary: exactly tne words to summarize this listing
+        //var carListings = new[]
+        //{
+        //    "Check out this 2020 Tesla Model 3! It's in excellent condition, has a long range, and comes with autopilot features.",
+        //    "Lease this 2018 Ford F-150! It's a reliable truck with a spacious cabin and great towing capacity.",
+        //    "A classic 1967 Chevrolet Camaro is up for sale! This vintage car has been restored and is a collector's dream.",
+        //    "Brand new 2023 BMW X5 for sale! It offers luxury, performance, and advanced technology features.",
+        //    "Selling a 2015 Honda Civic! It's fuel-efficient, well-maintained, and perfect for daily commuting."
+        //};
+        //foreach (var listingText in carListings)
+        //{
+        //    var response = await client.GetResponseAsync<CarDetails>(
+        //        $"""
+        //        Convert the Following car listing into a JSON obejct matching this C# schema:
+        //        Condition: "New" or "Used"
+        //        Make: (car manufacturer)
+        //        Model: (car model)
+        //        Year: (four-digit year)
+        //        ListingType: "Sale" or "Lease"
+        //        Price: integer only
+        //        Features: array of short strings
+        //        tenWordSummary: exactly tne words to summarize this listing
 
-                Here is the listing:
-                {listingText}
-                """);
+        //        Here is the listing:
+        //        {listingText}
+        //        """);
 
-            if (response.TryGetResult(out var info))
-            {
-                //Convert the CarDetails object to JSON for display
-                Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(
-                    info, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
-            }
-            else
-            {
-                Console.WriteLine($"Response was not in the expected format.");
-            }
-        }
+        //    if (response.TryGetResult(out var info))
+        //    {
+        //        //Convert the CarDetails object to JSON for display
+        //        Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(
+        //            info, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine($"Response was not in the expected format.");
+        //    }
+        //}
         #endregion
 
         #region ChatApp
