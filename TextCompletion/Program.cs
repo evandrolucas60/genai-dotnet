@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using OpenAI;
 using System.ClientModel;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text.Json.Serialization;
 
@@ -146,7 +147,47 @@ public class Program
                 Console.WriteLine($"Response was not in the expected format.");
             }
         }
+        #endregion
 
+        #region ChatApp
+        List<ChatMessage> chatHistory = new()
+        {
+            new ChatMessage(ChatRole.System, """
+                You are a freandly hiking enthusiast who helps people discover fun hikes in their area.
+                You introduce yourself as when first saying hello.
+                When helping people out, you always ask them for this information
+                to inform the hiking recommendation you provie:
+
+                1. the location they would like to hike
+                2. What hiking intensity they are looking for
+
+                You will then provide three suggestions for nearby hikes that vary in lenght
+                after you get that information. you will also share an interesting fact about
+                the loca nature on the hikes whem making a recommendation. At the end of your
+                response, ask if there is anything else you can help with.
+            """)
+        };
+
+        while (true)
+        {
+            //Get the user prompt and add it to the chat history
+            Console.WriteLine("Your prompt: ");
+            var userPrompt = Console.ReadLine();
+            chatHistory.Add(new ChatMessage(ChatRole.User, userPrompt));
+
+            //Get the AI response and add it to the chat history
+            Console.WriteLine("AI Response: ");
+            var response = "";
+            await foreach(var item in client.GetStreamingResponseAsync(chatHistory))
+            {
+                Console.Write(item.Text);
+                response += item.Text;
+            }
+            chatHistory.Add(new ChatMessage(ChatRole.Assistant, response));
+            Console.WriteLine();
+
+        }
+        #endregion
     }
 
     class CarDetails
@@ -163,6 +204,4 @@ public class Program
 
     [JsonConverter(typeof(JsonStringEnumConverter))]
     enum CarlistingDetails { Sale, Lease }
-
-    #endregion
 }
