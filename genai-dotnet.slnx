@@ -1,1 +1,5 @@
-<Solution />
+<Solution>
+  <Folder Name="/section5_llms/">
+    <Project Path="TextCompletion/TextCompletion.csproj" />
+  </Folder>
+</Solution>
