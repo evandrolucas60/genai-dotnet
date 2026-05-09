@@ -4,4 +4,7 @@
     <Project Path="TextCompletion/TextCompletion.csproj" />
     <Project Path="TextCompletion_Ollama/TextCompletion_Ollama.csproj" Id="aac91605-7deb-4d8f-ba8a-d8515d31247c" />
   </Folder>
+  <Folder Name="/section6_vectors/">
+    <Project Path="Embeddings/Embeddings.csproj" Id="70b7b52d-3efb-4545-bb08-5ea06002353e" />
+  </Folder>
 </Solution>
