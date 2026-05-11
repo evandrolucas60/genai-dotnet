@@ -10,5 +10,8 @@
   </Folder>
   <Folder Name="/section7_rag/">
     <Project Path="ChatApp_RAG/ChatApp_RAG.csproj" />
+    <Project Path="ChatApp_RAG_Qdrant/ChatApp_RAG_Qdrant.AppHost/ChatApp_RAG_Qdrant.AppHost.csproj" />
+    <Project Path="ChatApp_RAG_Qdrant/ChatApp_RAG_Qdrant.ServiceDefaults/ChatApp_RAG_Qdrant.ServiceDefaults.csproj" />
+    <Project Path="ChatApp_RAG_Qdrant/ChatApp_RAG_Qdrant.Web/ChatApp_RAG_Qdrant.Web.csproj" />
   </Folder>
 </Solution>
