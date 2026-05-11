@@ -23,7 +23,7 @@ public class Program
 
         //Create chat client
         IChatClient client =
-            new OpenAIClient(credential, options).GetChatClient("openai/gpt-4.1-mini").AsIChatClient();
+            new OpenAIClient(credential, options).GetChatClient("gpt-4.1-mini").AsIChatClient();
 
         #region Basic Completion
 
