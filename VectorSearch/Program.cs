@@ -43,7 +43,7 @@ public class Program
         //3- Return the most relevant movies based on cosine similarity
 
         // Example user query
-        var query = "I want to watch a movie about space exploration and adventure.";
+        var query = "I want to watch a movie about space science.";
         var queryEmbedding = await embeddingGenerator.GenerateVectorAsync(query);
 
         // Search for relevant movies in the vector store

@@ -8,4 +8,7 @@
     <Project Path="Embeddings/Embeddings.csproj" Id="70b7b52d-3efb-4545-bb08-5ea06002353e" />
     <Project Path="VectorSearch/VectorSearch.csproj" Id="45dfd19f-2f57-4a7e-bb92-2e8688a07722" />
   </Folder>
+  <Folder Name="/section7_rag/">
+    <Project Path="ChatApp_RAG/ChatApp_RAG.csproj" />
+  </Folder>
 </Solution>

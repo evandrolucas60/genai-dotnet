@@ -18,12 +18,12 @@ public class Program
         var credential = new ApiKeyCredential(config["GitHubModels:Token"] ?? throw new InvalidOperationException());
         var options = new OpenAIClientOptions()
         {
-            Endpoint = new Uri("https://models.github.ai/inference")
+            Endpoint = new Uri("https://models.github.ai/inference"),
         };
 
         //Create chat client
         IChatClient client =
-            new OpenAIClient(credential, options).GetChatClient("gpt-4.1-mini").AsIChatClient();
+            new OpenAIClient(credential, options).GetChatClient("openai/gpt-4.1-mini").AsIChatClient();
 
         #region Basic Completion
 
@@ -153,18 +153,7 @@ public class Program
         List<ChatMessage> chatHistory = new()
         {
             new ChatMessage(ChatRole.System, """
-                You are a freandly hiking enthusiast who helps people discover fun hikes in their area.
-                You introduce yourself as when first saying hello.
-                When helping people out, you always ask them for this information
-                to inform the hiking recommendation you provie:
-
-                1. the location they would like to hike
-                2. What hiking intensity they are looking for
-
-                You will then provide three suggestions for nearby hikes that vary in lenght
-                after you get that information. you will also share an interesting fact about
-                the loca nature on the hikes whem making a recommendation. At the end of your
-                response, ask if there is anything else you can help with.
+               
             """)
         };
 
